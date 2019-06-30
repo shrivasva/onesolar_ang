@@ -1,0 +1,134 @@
+<div></div>
+<div class="container" style="padding-top: 100px;" *ngIf='signInForm'>
+  <div class="card">
+    <h3 class="card-header">Please log in to proceed</h3>
+    <div class="card-block ">
+      <form [formGroup]="loginForm" class="text-center border border-light p-5" (ngSubmit)="login()">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10" [ngClass]="{'has-error': isSubmitted && loginForm.controls.user.errors }">
+            <input type="text" class='form-control' placeholder="User" formControlName="user">
+          </div>
+          <div *ngIf="isSubmitted &&  loginForm.controls.user.errors" class="help-block">
+            <span class="col-sm-2 col-form-label" style="color: red"
+              *ngIf="loginForm.controls.user.errors.required">user name is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10" [ngClass]="{ 'has-error': isSubmitted && loginForm.controls.pass.errors}">
+            <input class='form-control' type="password" placeholder="Password" formControlName="pass">
+          </div>
+          <div *ngIf="isSubmitted &&  loginForm.controls.pass.errors" class="help-block">
+            <div class="col-sm-2 col-form-label" style="color: red" *ngIf=" loginForm.controls.pass.errors.required">
+              Password is required</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div style="width: 90%; padding-left: 350px;">
+            <input type="submit" style="float: left;" class="btn btn-primary" value="Log in">
+            <input type="button" (click)='showForm(false)' class="btn btn-primary" value="signup">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-title" *ngIf="err!=='undefined'">
+      <span style="color: red" class="card-text">{{err}}</span>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf='!signInForm' style="padding-top: 100px;">
+  <div class="card">
+    <h3 class="card-header">Please Sign up to proceed</h3>
+    <div class="card-block ">
+
+      <form [formGroup]="signUpForm" class="text-center border border-light p-5" (ngSubmit)="signUp()">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">First Name :</label>
+          <div class="col-sm-10" [ngClass]="{'has-error': isSubmitted && signUpForm.controls.firstName.errors }">
+            <input type="text" class='form-control' placeholder="firstName" formControlName="firstName">
+          </div>
+          <div *ngIf="isSubmitted &&  signUpForm.controls.firstName.errors" class="help-block">
+            <span class="col-sm-2 col-form-label" style="color: red"
+              *ngIf="signUpForm.controls.firstName.errors.required"> *First Name is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">LastName:</label>
+
+          <div class="col-sm-10" [ngClass]="{ 'has-error': isSubmitted && signUpForm.controls.lastName.errors}">
+            <input class='form-control' type="text" placeholder="lastName" formControlName="lastName">
+          </div>
+
+          <div *ngIf="isSubmitted &&  signUpForm.controls.lastName.errors" class="help-block">
+            <span *ngIf=" signUpForm.controls.lastName.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">Last Name is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">Email</label>
+
+          <div class="col-sm-10" [ngClass]="{'has-error': isSubmitted && signUpForm.controls.email.errors }">
+            <input type="email" class='form-control' placeholder="email" formControlName="email">
+          </div>
+          <div *ngIf="isSubmitted &&  signUpForm.controls.email.errors" class="help-block">
+            <span *ngIf="signUpForm.controls.email.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">email is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">Mobile No</label>
+          <div class="col-sm-10" [ngClass]="{ 'has-error': isSubmitted && signUpForm.controls.mobile.errors}">
+            <input class='form-control' type="number" placeholder="mobile" formControlName="mobile">
+          </div>
+
+          <div *ngIf="isSubmitted &&  signUpForm.controls.mobile.errors" class="help-block">
+            <span *ngIf=" signUpForm.controls.mobile.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">Mobile No is required</span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">State</label>
+          <div class="col-sm-10" [ngClass]="{ 'has-error': isSubmitted && signUpForm.controls.state.errors}">
+            <input class='form-control' type="text" placeholder="state" formControlName="state">
+          </div>
+          <div *ngIf="isSubmitted &&  signUpForm.controls.state.errors" class="help-block">
+            <span *ngIf=" signUpForm.controls.state.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">State is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">City</label>
+          <div class="col-sm-10" [ngClass]="{'has-error': isSubmitted && signUpForm.controls.city.errors }">
+            <input type="text" class='form-control' placeholder="city" formControlName="city">
+          </div>
+          <div *ngIf="isSubmitted &&  signUpForm.controls.city.errors" class="help-block">
+            <span *ngIf="signUpForm.controls.city.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">City is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label pad">Address</label>
+          <div class="col-sm-10" [ngClass]="{ 'has-error': isSubmitted && signUpForm.controls.address.errors}">
+            <textarea class="form-control" rows="5" placeholder="address" formControlName="address"></textarea>
+
+          </div>
+          <div *ngIf="isSubmitted &&  signUpForm.controls.address.errors" class="help-block">
+            <span *ngIf=" signUpForm.controls.address.errors.required" class="col-sm-2 col-form-label"
+              style="color: red">Address is required</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div style="width: 90%; padding-left: 350px;">
+            <input type="button" style="float: left" (click)='showForm(true)' class="btn btn-primary" value="log in">
+            <input type="submit" class="btn btn-primary" value="signup">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-title">
+      <span class="card-text" *ngIf="err!=='undefined'">{{err}}</span>
+    </div>
+  </div>
+</div>

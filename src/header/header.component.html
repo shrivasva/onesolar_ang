@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" [routerLink]="'/welcome'">OneSloar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div style="color: white" class="collapse navbar-collapse " id="collapsibleNavbar">
+    <ul class="navbar-nav" style="color: white">
+      <li class="nav-item">
+        <a style="color: white" class="nav-link" [routerLink]="'/dashboard'">Leads</a>
+      </li>
+      <li class="nav-item">
+        <a style="color: white" class="nav-link" [routerLink]="'/project'">Project</a>
+      </li>
+      <li class="nav-item">
+          <a style="color: white" class="nav-link" [routerLink]="'/login'">Login</a>
+        </li>
+      <li class="nav-item nav navbar-nav navbar-right">
+        <a style="color: white" class="nav-link" (click)='getUserId()'>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

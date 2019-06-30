@@ -1,0 +1,26 @@
+      <div class="modal-header">
+          <h4 class="modal-title" id="modal-title">Add Qoute</h4>
+          <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form   [formGroup]="quoteForm">
+              <div class="form-group">
+                <label for="uname">Parameter1:</label>
+                <input type="text" class="form-control"  placeholder="param"  formControlName="param" required>
+                    <span ><div *ngIf="quoteForm.controls.param.status=='INVALID'"><sub style="color: red">*Param is required</sub></div></span>
+              </div>
+              <div class="form-group">
+                <label for="pwd">Parameter2:</label>
+                <input type="text" class="form-control"  placeholder="param1"  formControlName="param1" >
+                    <div *ngIf="quoteForm.controls.param1.status===INVALID">First Name is required</div>
+              </div>
+            </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="submitQuote();">Ok</button>
+        </div>
+     

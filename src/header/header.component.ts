@@ -14,11 +14,17 @@ userId:any
   }
   getUserId(){
 const res=JSON.parse(localStorage.getItem('currentUser'))
-console.log(res)
 this.userId=res['user_id']
-console.log(this.userId)
 this.route.navigate(['/logout/'+this.userId])
 
+  }
+  show(){
+
+    if(localStorage.getItem('currentUser')!==undefined && localStorage.getItem('currentUser')!==null){
+      return false;
+    }else {
+    return true
+    };
   }
 
 }
